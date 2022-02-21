@@ -14,7 +14,7 @@ const App = () => (
     <React.Fragment>
       <Menu />
       <Routes>
-        <Route exact path="/" element={<Nerdle />} />
+        <Route exact path="/" element={<Wordle />} />
         <Route exact path="/nerdle" element={<Nerdle />} />
         <Route exact path="/instant-nerdle" element={<InstantNerdle />} />
         <Route exact path="/wordle" element={<Wordle />} />

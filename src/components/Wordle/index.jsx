@@ -6,6 +6,7 @@ import {
   WORDLE_CASES,
   WORDLE_KEYS,
 } from "utils/constant";
+import { Dictionnary } from "utils/dictionnary";
 import {
   assignBoardColors,
   assignKeyboardColors,
@@ -77,7 +78,10 @@ const Wordle = () => {
           return;
         }
 
-        if (proposal.length < 5) {
+        if (
+          proposal.length < 5 ||
+          !Dictionnary.includes(proposal.toUpperCase())
+        ) {
           setMessage("Enter a valid word");
           return;
         }
