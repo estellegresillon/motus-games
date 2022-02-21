@@ -3,6 +3,7 @@ import { hydrate, render } from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "assets/styles/base.scss";
+import "assets/styles/common.scss";
 // import Home from "components/Home";
 import InstantNerdle from "components/InstantNerdle";
 import Menu from "components/common/Menu";

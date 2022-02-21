@@ -7,7 +7,7 @@ export const assignBoardColors = (
   solution
 ) => {
   if (!boxNumber || boardLineIndex === currentLineIndex) {
-    return;
+    return "";
   }
 
   if (solution.includes(boxNumber)) {

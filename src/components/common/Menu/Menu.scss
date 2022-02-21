@@ -1,9 +1,23 @@
 #Menu {
-  position: relative;
-  display: flex;
   align-items: center;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  padding-left: 20px;
 
   div {
-    margin: 10px;
+    margin: 30px 20px;
+    text-align: center;
+
+    &.is-selected {
+      background-color: pink;
+      border-radius: 5px;
+      padding: 5px 10px 7px 10px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
 }
