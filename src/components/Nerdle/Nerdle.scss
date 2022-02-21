@@ -1,0 +1,53 @@
+#Nerdle {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .game-status {
+    height: 50px;
+  }
+
+  .keyboard-container,
+  .playboard-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .keyboard-container {
+    margin-top: 50px;
+  }
+
+  .board-line {
+    display: flex;
+  }
+
+  .board-box {
+    align-items: center;
+    background-color: lightgray;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    margin: 2px;
+    width: 50px;
+
+    &.is-clickable {
+      cursor: pointer;
+    }
+
+    &.found {
+      background-color: rgb(113, 236, 113);
+    }
+
+    &.bad-index {
+      background-color: pink;
+    }
+
+    &.not-used {
+      background-color: #333333;
+    }
+  }
+}
