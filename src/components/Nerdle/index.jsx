@@ -17,14 +17,18 @@ import {
   updateLocalStorageScore,
 } from "utils/localStorage";
 
+import Box from "components/common/Box";
 import Keyboard from "components/common/Keyboard";
 
 import "./Nerdle.scss";
 
 const SOLUTION = "89*3=267";
 
+const INITIAL_MESSAGE =
+  "Guess the equation. All symbols (+-*/) must be on the left of the equal sign.";
+
 const Nerdle = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(INITIAL_MESSAGE);
   const [hasWon, setHasWon] = useState(null);
   const [line, setLine] = useState(0);
   const [propositions, setPropositions] = useState([]);
@@ -72,6 +76,8 @@ const Nerdle = () => {
       }
 
       if (key === "Enter" || key === "OK") {
+        setMessage(INITIAL_MESSAGE);
+
         const proposal = propositions[line];
 
         if (!proposal) {
@@ -137,7 +143,6 @@ const Nerdle = () => {
 
         newArray.push(newWord);
         setPropositions(newArray);
-        setMessage("");
       }
 
       if (NERDLE_KEYS.includes(key) || OPERATORS.includes(key)) {
@@ -158,7 +163,6 @@ const Nerdle = () => {
 
         filteredArray.push(newWord);
         setPropositions(filteredArray);
-        setMessage("");
       }
     },
     [hasWon, line, propositions]
@@ -189,19 +193,18 @@ const Nerdle = () => {
               const boxNumber = currentProposal?.[boxIndex];
 
               return (
-                <div
-                  className={`${assignBoardColors(
+                <Box
+                  classes={`${assignBoardColors(
                     boxNumber,
                     boxIndex,
                     lineIndex,
                     currentProposal,
                     line,
                     SOLUTION
-                  )} board-box`}
+                  )} ${lineIndex < line ? "is-validated" : ""} board-box`}
                   key={boxIndex}
-                >
-                  {boxNumber}
-                </div>
+                  text={boxNumber}
+                />
               );
             })}
           </div>

@@ -17,14 +17,18 @@ import {
   updateLocalStorageScore,
 } from "utils/localStorage";
 
+import Box from "components/common/Box";
 import Keyboard from "components/common/Keyboard";
 
 import "./Wordle.scss";
 
 const SOLUTION = "amour";
 
+const INITIAL_MESSAGE =
+  "Find the daily 5 letters word. Game is based on a french dictionnary :)";
+
 const Wordle = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(INITIAL_MESSAGE);
   const [hasWon, setHasWon] = useState(null);
   const [line, setLine] = useState(0);
   const [propositions, setPropositions] = useState([]);
@@ -72,6 +76,8 @@ const Wordle = () => {
       }
 
       if (key === "Enter" || key === "OK") {
+        setMessage(INITIAL_MESSAGE);
+
         const proposal = propositions[line];
 
         if (!proposal) {
@@ -128,7 +134,6 @@ const Wordle = () => {
 
         newArray.push(newWord);
         setPropositions(newArray);
-        setMessage("");
       }
 
       if (WORDLE_KEYS.includes(key)) {
@@ -149,7 +154,6 @@ const Wordle = () => {
 
         filteredArray.push(newWord);
         setPropositions(filteredArray);
-        setMessage("");
       }
     },
     [hasWon, line, propositions]
@@ -180,19 +184,18 @@ const Wordle = () => {
               const boxNumber = currentProposal?.[boxIndex];
 
               return (
-                <div
-                  className={`${assignBoardColors(
+                <Box
+                  classes={`${assignBoardColors(
                     boxNumber,
                     boxIndex,
                     lineIndex,
                     currentProposal,
                     line,
                     SOLUTION
-                  )} board-box`}
+                  )} ${lineIndex < line ? "is-validated" : ""} board-box`}
                   key={boxIndex}
-                >
-                  {boxNumber}
-                </div>
+                  text={boxNumber}
+                />
               );
             })}
           </div>

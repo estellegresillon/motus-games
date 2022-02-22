@@ -11,6 +11,7 @@ import {
   updateLocalStorageScore,
 } from "utils/localStorage";
 
+import Box from "components/common/Box";
 import Keyboard from "components/common/Keyboard";
 
 import "./InstantNerdle.scss";
@@ -18,8 +19,11 @@ import "./InstantNerdle.scss";
 const SOLUTION = "5*7+8=43";
 const HINT = "84*+=735";
 
+const INITIAL_MESSAGE =
+  "Rearrange the pink squares to solve the calculation. All symbols (+-*/) must be on the left of the equal sign.";
+
 const InstantNerdle = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(INITIAL_MESSAGE);
   const [hasWon, setHasWon] = useState(null);
   const [line, setLine] = useState(0);
   const [proposition, setProposition] = useState("");
@@ -67,6 +71,8 @@ const InstantNerdle = () => {
       }
 
       if (key === "Enter" || key === "OK") {
+        setMessage(INITIAL_MESSAGE);
+
         if (proposition.length === 0) {
           return;
         }
@@ -114,7 +120,6 @@ const InstantNerdle = () => {
 
         const newProposition = proposition.slice(0, -1);
         setProposition(newProposition);
-        setMessage("");
       }
 
       if (NERDLE_KEYS.includes(key) || OPERATORS.includes(key)) {
@@ -124,7 +129,6 @@ const InstantNerdle = () => {
           return;
         }
         setProposition(newProposition);
-        setMessage("");
       }
     },
     [hasWon, line, proposition]
@@ -154,19 +158,18 @@ const InstantNerdle = () => {
       <div className="playboard-container">
         <div className="board-line">
           {HINT.split("").map((boxNumber, boxIndex) => (
-            <div
-              className={`${assignBoardColors(
+            <Box
+              classes={`${assignBoardColors(
                 boxNumber,
                 boxIndex,
                 0,
                 HINT.split(""),
                 -1,
                 SOLUTION
-              )} board-box`}
+              )} is-validated board-box`}
               key={boxIndex}
-            >
-              {boxNumber}
-            </div>
+              text={boxNumber}
+            />
           ))}
         </div>
         <div className="board-line">
@@ -174,19 +177,18 @@ const InstantNerdle = () => {
             const boxNumber = proposition?.[boxIndex];
 
             return (
-              <div
-                className={`${assignBoardColors(
+              <Box
+                classes={`${assignBoardColors(
                   boxNumber,
                   boxIndex,
                   0,
                   proposition.split(""),
                   line,
                   SOLUTION
-                )} board-box`}
+                )} ${hasWon !== null ? "is-validated" : ""} board-box`}
                 key={boxIndex}
-              >
-                {boxNumber}
-              </div>
+                text={boxNumber}
+              />
             );
           })}
         </div>
