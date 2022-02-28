@@ -5,19 +5,21 @@
   z-index: 1;
   padding-left: 20px;
 
-  div {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  > div {
+    color: white;
     margin: 30px 20px;
     text-align: center;
+    white-space: nowrap;
 
     &.is-selected {
       background-color: pink;
       border-radius: 5px;
       padding: 5px 10px 7px 10px;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
     }
   }
 }
