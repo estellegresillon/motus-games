@@ -26,7 +26,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   height: 15vh;
   padding: 0 40px;
-  width: calc(100% - 84px);
+  width: 600px;
 
   .score {
     background: white;

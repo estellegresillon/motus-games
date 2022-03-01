@@ -24,9 +24,10 @@ const ResultWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  height: 50vh;
+  height: 400px;
   position: relative;
-  width: 70%;
+  width: 450px;
+  margin-top: 50px;
 
   .sign-bg {
     top: 50px;

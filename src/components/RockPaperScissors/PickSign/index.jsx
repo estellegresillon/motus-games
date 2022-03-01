@@ -21,9 +21,10 @@ const PickSignWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  height: 50vh;
+  height: 400px;
   position: relative;
-  width: 70%;
+  width: 450px;
+  margin-top: 50px;
 
   .bg-image {
     position: absolute;
