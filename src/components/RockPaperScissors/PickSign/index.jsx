@@ -23,7 +23,7 @@ const PickSignWrapper = styled.div`
   margin: 0 auto;
   height: 400px;
   position: relative;
-  width: 450px;
+  width: 400px;
   margin-top: 50px;
 
   .bg-image {
