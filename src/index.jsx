@@ -4,11 +4,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "assets/styles/base.scss";
 import "assets/styles/common.scss";
-// import Home from "components/Home";
-import InstantNerdle from "components/InstantNerdle";
+
 import Menu from "components/common/Menu";
-import Nerdle from "components/Nerdle";
 import Wordle from "components/Wordle";
+import { GAMES } from "utils/constant";
 
 const App = () => (
   <BrowserRouter>
@@ -16,9 +15,14 @@ const App = () => (
       <Menu />
       <Routes>
         <Route exact path="/" element={<Wordle />} />
-        <Route exact path="/nerdle" element={<Nerdle />} />
-        <Route exact path="/instant-nerdle" element={<InstantNerdle />} />
-        <Route exact path="/wordle" element={<Wordle />} />
+        {GAMES.map((game) => (
+          <Route
+            exact
+            key={game.name}
+            path={game.link}
+            element={game.component}
+          />
+        ))}
       </Routes>
     </React.Fragment>
   </BrowserRouter>

@@ -1,37 +1,43 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+import GamesModal from "components/common/GamesModal";
 import ProjectsModal from "components/common/ProjectsModal";
 
 import "./Menu.scss";
 
 const Menu = () => {
+  const [isGamesOpen, setGamesOpen] = useState(false);
   const [isOtherProjectsOpen, setOtherProjectsOpen] = useState(false);
-  const location = useLocation();
-  const { pathname } = location;
+
+  const handleGamesOpen = (boolean) => {
+    setGamesOpen(boolean);
+
+    if (boolean) {
+      setOtherProjectsOpen(false);
+    }
+  };
+
+  const handleOtherProjectsOpen = (boolean) => {
+    setOtherProjectsOpen(boolean);
+
+    if (boolean) {
+      setGamesOpen(false);
+    }
+  };
 
   return (
     <div id="Menu">
-      <div className={pathname === "/nerdle" ? "is-selected" : ""}>
-        <Link to="/nerdle">Nerdle</Link>
-      </div>
-      <div className={pathname === "/instant-nerdle" ? "is-selected" : ""}>
-        <Link to="/instant-nerdle">Instant Nerdle</Link>
-      </div>
-      <div
-        className={
-          pathname === "/" || pathname === "/wordle" ? "is-selected" : ""
-        }
-      >
-        <Link to="/wordle">Wordle</Link>
-      </div>
       <Item>
-        <ItemContent onClick={() => setOtherProjectsOpen(true)}>
+        <ItemContent onClick={() => handleGamesOpen(true)}>Games</ItemContent>
+        {isGamesOpen && <GamesModal onClose={() => handleGamesOpen(false)} />}
+      </Item>
+      <Item>
+        <ItemContent onClick={() => handleOtherProjectsOpen(true)}>
           Other projects
         </ItemContent>
         {isOtherProjectsOpen && (
-          <ProjectsModal onClose={() => setOtherProjectsOpen(false)} />
+          <ProjectsModal onClose={() => handleOtherProjectsOpen(false)} />
         )}
       </Item>
     </div>
