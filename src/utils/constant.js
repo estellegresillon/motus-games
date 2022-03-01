@@ -1,6 +1,6 @@
 import InstantNerdle from "components/InstantNerdle";
 import Nerdle from "components/Nerdle";
-// import RockPaperScissors from "components/RockPaperScissors";
+import RockPaperScissors from "components/RockPaperScissors";
 import Tetris from "components/Tetris";
 // import TicTacToe from "components/TicTacToe";
 import Wordle from "components/Wordle";
@@ -62,11 +62,11 @@ export const GAMES = [
     link: "/tetris",
     name: "Tetris",
   },
-  // {
-  //   component: RockPaperScissors,
-  //   link: "/rps",
-  //   name: "Rock, Paper, Scissors",
-  // },
+  {
+    component: <RockPaperScissors />,
+    link: "/rps",
+    name: "Rock, Paper, Scissors",
+  },
   // {
   //   component: TicTacToe,
   //   link: "/tictactoe",

@@ -60,7 +60,6 @@ const Tetris = () => {
     } else {
       // Game over!
       if (player.pos.y < 1) {
-        console.log("GAME OVER!!!");
         setGameOver(true);
         setDropTime(null);
       }
@@ -125,7 +124,6 @@ export default Tetris;
 
 const TetrisWrapper = styled.div`
   align-items: center;
-  background-color: black;
   color: white;
   display: flex;
   flex-direction: column;

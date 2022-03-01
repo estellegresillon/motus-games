@@ -1,5 +1,5 @@
 h1 {
-  margin-top: 120px;
+  margin-top: 70px;
 }
 
 .game-status {
@@ -37,12 +37,12 @@ h1 {
   }
 
   .board-box {
-    background-color: #c7d0d2;
+    background-color: #97a2b3;
     transition: background-color;
     transition-delay: 1s;
 
     &.found {
-      background-color: #6ad06a;
+      background-color: #6ad084;
     }
 
     &.bad-index {
@@ -50,7 +50,7 @@ h1 {
     }
 
     &.not-used {
-      background-color: #333333;
+      background-color: #080927;
     }
   }
 }
@@ -105,7 +105,7 @@ h1 {
 
   &.found {
     .back {
-      background-color: #6ad06a;
+      background-color: #6ad084;
     }
   }
 
@@ -117,7 +117,7 @@ h1 {
 
   &.not-used {
     .back {
-      background-color: #333333;
+      background-color: #080927;
     }
   }
 
@@ -150,7 +150,7 @@ h1 {
   }
 
   .front {
-    background-color: #c7d0d2;
+    background-color: #97a2b3;
   }
 
   .back {

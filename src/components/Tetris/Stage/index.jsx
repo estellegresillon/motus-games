@@ -18,8 +18,9 @@ const StyledStage = styled.div`
   );
   grid-template-columns: repeat(${(props) => props.width}, 1fr);
   grid-gap: 1px;
-  border: 2px solid #333;
+  border: 2px solid #171f43;
   width: 100%;
   max-width: 25vw;
-  background: #111;
+  background: #171f43;
+  border-radius: 5px;
 `;

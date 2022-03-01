@@ -22,10 +22,7 @@ export const useStage = (player, resetPlayer) => {
     const updateStage = (prevStage) => {
       // First flush the stage
       const newStage = prevStage.map((row) =>
-        row.map((cell) => {
-          console.log(cell, "hi");
-          return cell[1] === "clear" ? [0, "clear"] : cell;
-        })
+        row.map((cell) => (cell[1] === "clear" ? [0, "clear"] : cell))
       );
 
       // Then draw the tetromino
@@ -39,6 +36,7 @@ export const useStage = (player, resetPlayer) => {
           }
         });
       });
+
       // Then check if we got some score if collided
       if (player.collided) {
         resetPlayer();
